@@ -23,7 +23,7 @@
 \usepackage[font=small, labelfont=bf]{caption} % Required for specifying captions to tables and figures
 \usepackage{booktabs} % Horizontal rules in tables
 \usepackage{relsize} % Used for making text smaller in some places
-
+\usepackage{enumitem} % Use for small margin bullet lists
 \graphicspath{{figures/}} % Directory in which figures are stored
 
 \definecolor{bordercol}{RGB}{40,40,40} % Border color of content boxes
@@ -54,17 +54,17 @@
 	background=user,
 	headerborder=open, % Change to closed for a line under the content box headers
 	boxshade=plain
-}
-{}
+} 
 %
 %----------------------------------------------------------------------------------------
 %	TITLE AND AUTHOR NAME
 %----------------------------------------------------------------------------------------
 %
-{\sf\bf Untangling the chromatin conformation \\ of the \textit{GNG12-AS1/DIRAS3} locus} % Poster title
-{\vspace{0.5em} Stephen Richer, Adele Murrell, Dorothy Buck\\ 
+{\includegraphics[scale=0.6]{uob-logo.eps}} % left logo
+{\sf\bf\huge Untangling the chromatin conformation \\ of the \textit{GNG12-AS1/DIRAS3} locus} % Poster title
+{\vspace{0.5em} Stephen Richer, Giuseppina Pisignano, Adele Murrell, Dorothy Buck \\ 
 {\vspace{0.5em} s.richer@bath.ac.uk}} 
-{\includegraphics[scale=0.8]{uob-logo.eps}}
+{\includegraphics[scale=0.11]{qrcode}} % right logo
 
 %----------------------------------------------------------------------------------------
 %	INTRODUCTION
@@ -72,8 +72,18 @@
 
 \headerbox{Introduction}{name=introduction,column=0, row=0}{
 
-I study \textit{campy}. 
+\begin{itemize}[leftmargin=*]
+\item Here we investigate chromatin organisation at the \textit{GNG12-AS1/DIRAS3} locus.
+\item \textit{DIRAS3} is maternally imprinted and these genes are reciprocally expressed throughout the cell cycle. 
+\item SiRNA knock-down of exon 1, but not exon 7, leads to \textit{up-regulation} of \textit{DIRAS3} \cite{Stojic2016}.
+\item What role does chromatin organisation play in this negative gene non-autonomy? 
+\end{itemize}
 
+\begin{center}
+\includegraphics[width=1.0\linewidth]{gng12-locus}
+\captionof{figure}{The \textit{GNG12-AS1} genomic locus.}
+%(chr1: 68,297,971 - 68,668,670)
+\end{center} 
 }
 
 %----------------------------------------------------------------------------------------
@@ -83,45 +93,46 @@ I study \textit{campy}.
 \headerbox{Materials and Methods}{name=methods,column=0,below=introduction}{
 
 \begin{description}
-\item[ER1] Sed a orci non ipsum posuere placerat. Nunc in mi augue, a adipiscing massa. Donec dapibus gravida odio, condimentum convallis urna.\item[ER2] Nullam sagittis cursus neque, sit amet mollis elit auctor in. Etiam sed lectus a nulla rhoncus interdum a tempus nunc. Sed at eleifend purus.
+\item[Capture HiC] Generate high-resolution chromatin conformation maps of the \textit{GNG12-AS1} locus in HB2 (mammary epithelial) and MCF7 (breast cancer) cell lines.
+\item[Bioinformatics] Compare TAD structure and assess changes in contact frequency between cancer and non-cancer cell lines.
 \end{description}
-
-Nullam sollicitudin lobortis urna quis varius. Nullam sagittis blandit diam, $DN = G_t(V_t,E_t)$, risus $E_t \subseteq V_t \times V_t$ ($\forall t \geq 0$). vel tortor justo, $G_0$, quis malesuada lorem.
 
 \begin{center}
 \includegraphics[width=1.0\linewidth]{hic_technique}
-\captionof{figure}{Figure caption}
+\captionof{figure}{Overview of capture HiC protocol.}
 \end{center}
 
-Vivamus porta lacus et lectus \textbf{porta lacus}. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis. torte $G_t$ hac millis \textbf{plates} Idk 
 }
 
 %----------------------------------------------------------------------------------------
 %	CONCLUSION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Conclusion}{name=conclusion,column=0,below=methods}{
+\headerbox{Future work}{name=conclusion,column=0,below=methods}{
 
-Fusce at erat vitae metus porttitor auctor sit amet at ante. In id dolor tellus, non aliquet elit. Vestibulum bibendum, augue sed laoreet congue, enim nisi ultricies diam, ac pharetra mi dui ut sapien. Maecenas fermentum, neque ut scelerisque consequat, purus leo ultrices nulla, quis scelerisque risus elit non turpis. 
+\begin{itemize}[leftmargin=*]
+\item Create 3D visualisation of DNA looping based on HiC interaction map.
+\item What are biological implications of reduction in interaction frequency, between HB2  and MCF7, at \textit{GNG12-AS1} locus?
+\item Investigate unexpected changes up-down and down-stream of \textit{GNG12-AS1} locus.
+\item Allele specific HiC to study effect of imprinting on chromatin organisation. 
+\item Refine methods to robustly compare TAD changes between samples.
+\end{itemize}
 
-\begin{enumerate}
-\item Cras ac ipsum eu nisl imperdiet interdum nunc bibendum, est in pulvinar facilisis, mi purus fringilla tellus, eu varius ipsum ante laoreet ipsum
-\item Sed cursus erat quis odio laoreet facilisis maecenas vehicula
-\end{enumerate}
 }
 
 %----------------------------------------------------------------------------------------
 %	REFERENCES
 %----------------------------------------------------------------------------------------
 
-\headerbox{References}{name=references,column=0,below=conclusion}{
+\headerbox{References}{name=references,column=0,
+	below = conclusion, above = bottom}{
 
 \smaller % Reduce the font size in this block
 \renewcommand{\section}[2]{\vskip 0.05em} % Get rid of the default "References" section title
 \nocite{*} % Insert publications even if they are not cited in the poster
 
 \bibliographystyle{unsrt}
-\bibliography{poster} 
+\bibliography{poster-abr} 
 }
 
 %----------------------------------------------------------------------------------------
@@ -129,15 +140,20 @@ Fusce at erat vitae metus porttitor auctor sit amet at ante. In id dolor tellus,
 %----------------------------------------------------------------------------------------
 
 % To reduce this block to 1 column width, remove 'span=2'
-\headerbox{Results Heading} {
+\headerbox{Chromatin organisation and TADs at \textit{GNG12-AS1}} {
 	name = results1, span = 2, column = 1}{ 
-
-Nunc sit amet sem ut nulla tincidunt mattis vel nec mauris. Vestibulum odio tellus, lobortis. Vel adipiscing, Aliquam dictum, ligula egestas commodo posuere, lectus lectus congue ligula, sed posuere urna lectus at nisi. Nullam varius, lacus et interdum hendrerit, odio orci ultrices mauris, id interdum eros mauris at urna. Fusce in nisi eros, sit amet volutpat turpis, \textbf{porttior magna} (commodo blandit euismod) \textbf{facilisis ornate magnis} (dis magnis). 
-
+\vspace{1em}
 %------------------------------------------------
 \begin{center}
-\includegraphics[width=0.9\linewidth]{GNG12_AS1_DIRAS3_ontad_sum_3000_count}
-\captionof{figure}{Figure caption}
+\includegraphics[width=1.0\linewidth]{GNG12_AS1_DIRAS3_ontad_sum_3000_count}
+\captionof{figure}{
+HiC interaction map, summed across two replicates, for HB2 (top) and MCF7 (bottom) cell lines .
+Matrices were binned at 3000bp, normalised for read depth and corrected using iterative correction.
+TADs were called independently for each replicate using OnTAD \cite{An2019}.
+Current methods show some inconsistency in TADs identified between replicates.
+However, TAD boundaries align well with CTCF binding sites and reveal a complex hierarchical structure.
+These TADs likely represent a consensus set of domains that exist among the cell population and across the cell cycle.
+}
 \end{center}
 %------------------------------------------------
 }
@@ -149,12 +165,19 @@ Nunc sit amet sem ut nulla tincidunt mattis vel nec mauris. Vestibulum odio tell
 \headerbox{Chromatin conformation changes between HB2 and MCF7} {
 	name = results2, span=2, column = 1, 
 	below = results1, above = bottom}{
-
+\vspace{1em}
 %------------------------------------------------
 
 \begin{center}
-\includegraphics[width=0.9\linewidth]{GNG12_AS1_DIRAS3_HB2_WT_vs_MCF7-logFC}
-\captionof{figure}{Figure caption}
+\includegraphics[width=1.0\linewidth]{GNG12_AS1_DIRAS3_HB2_WT_vs_MCF7-logFC}
+\captionof{figure}{
+Log\textsubscript{2} fold-change of MCF7 over HB2 interaction frequencies, binned at 5000bp.
+Red represents an increase in interaction frequency in MCF7 and blue represents a decrease.
+Differential interactions were called using diffHiC \cite{Lun2015}.
+Significant changes were defined as those with absolute log\textsubscript{2} fold-change $>$ 2 and FDR $<$ 0.01.
+Broad regions of reduced contact frequency, in MCF7, were detected approximately 1.5 megabases downstream of \textit{GNG12-AS1} (purple), near \textit{PDE4B} (red), \textit{MIRE1} (black) and \textit{SGI1P} (yellow).
+Increases in contact frequency, in MCF7, were also detected between \textit{LRRC7} (green) and a number of regions approximately 500 kilobases upstream of \textit{GNG12-AS1}.
+}
 \end{center}
 
 }
