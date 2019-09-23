@@ -24,6 +24,7 @@
 \usepackage{booktabs} % Horizontal rules in tables
 \usepackage{relsize} % Used for making text smaller in some places
 \usepackage{enumitem} % Use for small margin bullet lists
+\usepackage{xcolor} % Colour of text
 \graphicspath{{figures/}} % Directory in which figures are stored
 
 \definecolor{bordercol}{RGB}{40,40,40} % Border color of content boxes
@@ -62,9 +63,9 @@
 %
 {\includegraphics[scale=0.6]{uob-logo.eps}} % left logo
 {\sf\bf\huge Untangling the chromatin conformation \\ of the \textit{GNG12-AS1/DIRAS3} locus} % Poster title
-{\vspace{0.5em} Stephen Richer, Giuseppina Pisignano, Adele Murrell, Dorothy Buck \\ 
+{\vspace{0.5em} \normalsize Stephen Richer, Giuseppina Pisignano, Lovorka Stojic, Malwina Prater, Valeriya Malysheva, \\ Stefan Schoenfelder, Cameron Osborne, Peter Fraser, Dorothy Buck, Adele Murrell \\ 
 {\vspace{0.5em} s.richer@bath.ac.uk}} 
-{\includegraphics[scale=0.11]{qrcode}} % right logo
+{\includegraphics[scale=0.13]{qrcode}} % right logo
 
 %----------------------------------------------------------------------------------------
 %	INTRODUCTION
@@ -73,15 +74,14 @@
 \headerbox{Introduction}{name=introduction,column=0, row=0}{
 
 \begin{itemize}[leftmargin=*]
-\item Here we investigate chromatin organisation at the \textit{GNG12-AS1/DIRAS3} locus.
-\item \textit{DIRAS3} is maternally imprinted and these genes are reciprocally expressed throughout the cell cycle. 
-\item SiRNA knock-down of exon 1, but not exon 7, leads to \textit{up-regulation} of \textit{DIRAS3} \cite{Stojic2016}.
-\item What role does chromatin organisation play in this negative gene non-autonomy? 
+\item Here we study chromatin organisation at the imprinted \textit{GNG12-AS1/DIRAS3} locus.
+\item This locus displays negative gene non-autonomy - \textit{GNG12-AS1} and \textit{DIRAS3} are reciprocally expressed - but the underlying mechanism remains unknown.
+\item To investigate this we compare chromatin organisation between cell lines with contrasting epigenetic profiles.
 \end{itemize}
 
 \begin{center}
-\includegraphics[width=1.0\linewidth]{gng12-locus}
-\captionof{figure}{The \textit{GNG12-AS1} genomic locus.}
+\includegraphics[width=1.0\linewidth]{mcf7_figure}
+\captionof{figure}{Imprinted gene expression at the \textit{GNG12-AS1} locus in HB2 and MCF7 cell lines.}
 %(chr1: 68,297,971 - 68,668,670)
 \end{center} 
 }
@@ -140,22 +140,23 @@
 %----------------------------------------------------------------------------------------
 
 % To reduce this block to 1 column width, remove 'span=2'
-\headerbox{Chromatin organisation and TADs at \textit{GNG12-AS1}} {
+\headerbox{Chromatin organisation at \textit{GNG12-AS1}} {
 	name = results1, span = 2, column = 1}{ 
-\vspace{1em}
 %------------------------------------------------
 \begin{center}
 \includegraphics[width=1.0\linewidth]{GNG12_AS1_DIRAS3_ontad_sum_3000_count}
 \captionof{figure}{
-HiC interaction map, summed across two replicates, for HB2 (top) and MCF7 (bottom) cell lines .
-Matrices were binned at 3000bp, normalised for read depth and corrected using iterative correction.
-TADs were called independently for each replicate using OnTAD \cite{An2019}.
-Current methods show some inconsistency in TADs identified between replicates.
-However, TAD boundaries align well with CTCF binding sites and reveal a complex hierarchical structure.
-These TADs likely represent a consensus set of domains that exist among the cell population and across the cell cycle.
+HiC interaction map, summed across 2 replicates, for HB2 (top) and MCF7 (bottom).
 }
 \end{center}
 %------------------------------------------------
+
+\begin{itemize}[leftmargin=*]
+\item TAD boundaries align well with CTCF binding sites and reveal a complex hierarchical structure.
+\item There is some inconsistency in TADs \cite{An2019} between replicates.
+\item These structures likely represent a consensus set of domains that exist among the cell population and across the cell cycle.
+\end{itemize}
+
 }
 
 %----------------------------------------------------------------------------------------
@@ -165,21 +166,19 @@ These TADs likely represent a consensus set of domains that exist among the cell
 \headerbox{Chromatin conformation changes between HB2 and MCF7} {
 	name = results2, span=2, column = 1, 
 	below = results1, above = bottom}{
-\vspace{1em}
 %------------------------------------------------
 
 \begin{center}
 \includegraphics[width=1.0\linewidth]{GNG12_AS1_DIRAS3_HB2_WT_vs_MCF7-logFC}
 \captionof{figure}{
-Log\textsubscript{2} fold-change of MCF7 over HB2 interaction frequencies, binned at 5000bp.
-Red represents an increase in interaction frequency in MCF7 and blue represents a decrease.
-Differential interactions were called using diffHiC \cite{Lun2015}.
-Significant changes were defined as those with absolute log\textsubscript{2} fold-change $>$ 2 and FDR $<$ 0.01.
-Broad regions of reduced contact frequency, in MCF7, were detected approximately 1.5 megabases downstream of \textit{GNG12-AS1} (purple), near \textit{PDE4B} (red), \textit{MIRE1} (black) and \textit{SGI1P} (yellow).
-Increases in contact frequency, in MCF7, were also detected between \textit{LRRC7} (green) and a number of regions approximately 500 kilobases upstream of \textit{GNG12-AS1}.
+Log\textsubscript{2} FC of MCF7 over HB2 with differential interactions. \textcolor{red}{Red} = increase in MCF7.
 }
 \end{center}
 
+\begin{itemize}[leftmargin=*]
+\item Broad regions of reduced contact frequency, in MCF7, were detected approximately 1.5 megabases downstream of \textcolor{orange}{\textit{\textbf{GNG12-AS1}}}, near \textcolor{red}{\textit{\textbf{PDE4B}}}, \textcolor{black}{\textit{\textbf{MIRE1}}} and \textcolor{yellow}{\textit{\textbf{SGI1P}}}.
+\item Increases in contact frequency, in MCF7, were also detected between \textcolor{green}{\textit{\textbf{LRRC7}}} and a number of regions approximately 500 kilobases upstream of \textcolor{orange}{\textit{\textbf{GNG12-AS1}}}.
+\end{itemize}
 }
 
 \end{poster}
